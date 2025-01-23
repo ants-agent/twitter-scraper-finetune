@@ -32,7 +32,7 @@ Pipeline for generating AI character files and training datasets by scraping pub
 
 ### Twitter Collection
 ```bash
-npm run twitter -- username
+npm run twitter -- usernae
 ```
 Example: `npm run twitter -- pmarca`
 

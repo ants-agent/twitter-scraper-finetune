@@ -604,14 +604,21 @@ async saveCookies() {
   }
 
   async showSampleTweets(tweets) {
-    const { showSample } = await inquirer.prompt([
-      {
-        type: "confirm",
-        name: "showSample",
-        message: "Would you like to see a sample of collected tweets?",
-        default: true,
-      },
-    ]);
+    let showSample = false;
+    
+    if (process.env.show_sample === 'true') {
+      showSample = true;
+    } else {
+      const { showSample: userChoice } = await inquirer.prompt([
+        {
+          type: "confirm",
+          name: "showSample",
+          message: "Would you like to see a sample of collected tweets?",
+          default: true,
+        },
+      ]);
+      showSample = userChoice;
+    }
 
     if (showSample) {
       Logger.info("\n🌟 Sample Tweets (Most Engaging):");
